@@ -1,0 +1,30 @@
+<div class="centered-content">
+    <div class="modal-box">
+      <h1 class="title">
+        Edit task
+      </h1>
+
+      <input #taskTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter task name..." [value]="task.title">
+      <input #taskDescriptionInput class="input has-background-light is-medium" type="text" placeholder="Enter task description..." style="margin-top: 8px" [value]="task.description">
+      <select #taskStatusInput name="status" id="status" style="display: block; margin-top: 8px" [value]="task.status">
+        <option value="TODO">TODO</option>
+        <option value="IN_PROGRESS">In Progress</option>
+        <option value="DONE">Done</option>
+      </select>
+        <select #taskPriorityInput name="priority" id="priority" style="display: block; margin-top: 8px" [value]="task.priority">
+        <option value="2">Low</option>
+        <option value="1">Normal</option>
+        <option value="0">High</option>
+      </select>
+      <select #taskAssignmentInput name="assignment" id="assignment" style="margin-top: 8px" [value]="task.assignment">
+        <option *ngFor="let user of users">{{ user }}</option>
+      </select>
+      <div class="buttons is-right" style="margin-top: 8px">
+        <button class="button is-medium" [routerLink]="['/lists', listId]">Cancel</button>
+        <button
+          class="button is-primary has-text-white is-medium"
+          (click)="updateTask(taskTitleInput.value, taskDescriptionInput.value, taskStatusInput.value, +taskPriorityInput.value, taskAssignmentInput.value)"
+        >Save</button>
+      </div>
+    </div>
+  </div>

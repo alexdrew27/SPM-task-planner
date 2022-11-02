@@ -1,0 +1,27 @@
+<div class="centered-content">
+  <div class="modal-box">
+    <h1 class="title">
+      Create a new task
+    </h1>
+
+    <input #taskTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter task name...">
+    <input #taskDescriptionInput class="input has-background-light is-medium" type="text" placeholder="Enter task description..." style="margin-top: 8px">
+    <select #taskPriorityInput name="priority" id="priority" style="display: block; margin-top: 8px">
+      <option value="2">Low</option>
+      <option value="1" selected>Normal</option>
+      <option value="0">High</option>
+    </select>
+    <select #taskAssignmentInput name="assignment" id="assignment" style="margin-top: 8px">
+      <option *ngFor="let user of users">{{ user }}</option>
+    </select>
+    <div class="buttons is-right" style="margin-top: 8px">
+      <button class="button is-medium" [routerLink]="['/lists', listId]">Cancel</button>
+      <button
+        class="button is-primary has-text-white is-medium"
+        (click)="createTask(taskTitleInput.value, taskDescriptionInput.value, +taskPriorityInput.value, taskAssignmentInput.value)"
+      >Create</button>
+    </div>
+
+
+  </div>
+</div>
